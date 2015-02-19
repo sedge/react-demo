@@ -1,8 +1,5 @@
 var React = require('React');
-
-var Header = require('./header.js');
-var Content = require('./header.js');
-var Footer = require('./footer.js');
+var HelloWorld = require('./HelloWorld.js');
 
 var names = [
 	'sedge',
@@ -13,9 +10,7 @@ var names = [
 App = React.createClass({
 	render: function() {
 		return (
-			<Header />
-			<Content />
-			<Footer />
+			<HelloWorld names={this.props.names} />
 		);
 	}
 });
