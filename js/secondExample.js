@@ -1,20 +1,31 @@
 var React = require('React');
 
 var Header = require('./header.js');
-// var Content = require('./header.js');
-// var Footer = require('./footer.js');
+var Content = require('./content.js');
+var Footer = require('./footer.js');
 
 var urls = {
-	"Welcome Page": "/",
-	"Add a Student": "/student/add",
-	"View all Students": "/students"
+	nav: {
+		"Welcome Page": "/",
+		"Add a Student": "/student/add",
+		"View all Students": "/students"
+	},
+	footer: {
+		"Privacy Policy": "/privacy",
+		"About us": "/about"
+	}
 };
 
 App = React.createClass({
 	render: function() {
+		var nav = this.props.urls.nav;
+		var footerUrls = this.props.urls.footer;
+
 		return (
 			<div id="main">
-				<Header urls={this.props.urls} />
+				<Header urls={nav} />
+				<Content />
+				<Footer urls={footerUrls} />
 			</div>
 		);
 	}

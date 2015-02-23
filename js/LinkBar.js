@@ -3,7 +3,7 @@ var React = require("react");
 var LinkBar = module.exports = React.createClass({
 	render: function() {
 		return (
-			<ul>
+			<ul className="linkbar">
 				{this.props.children}
 			</ul>
 		);
@@ -13,7 +13,7 @@ var LinkBar = module.exports = React.createClass({
 LinkBar.Link = React.createClass({
 	render: function() {
 		return (
-			<li className="menu">
+			<li>
 				<a href={"#" + this.props.url}>
 					{this.props.children}
 				</a>
