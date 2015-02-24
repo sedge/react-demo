@@ -8,6 +8,8 @@
     "reactify": "^1.0.0"
   },
   "devDependencies": {
+    "backbone": "^1.1.2",
+    "backbone-react-component": "^0.8.0-beta.1",
     "grunt-contrib-clean": "^0.6.0",
     "jit-grunt": "^0.9.1",
     "time-grunt": "^1.0.0"
