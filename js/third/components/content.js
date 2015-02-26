@@ -1,7 +1,9 @@
 var React = require('React');
-var Router = require('../lib/router');
+var Router = require('../bin/router');
+var Backbone = require('backbone');
 
 var Welcome = require('./welcome.js');
+
 var StudentForm = require('./studentForm.js');
 var StudentList = require('./studentList.js');
 var StudentView = require('./studentView.js');
@@ -22,11 +24,26 @@ var Content = module.exports = React.createClass({
 	// Before rendering and attaching to
 	// the dom, this executes
 	componentWillMount: function() {
+		var that = this;
+
 		this.router = new Router();
-		router.on("default", this.goHome);
-		router.on("route:addStudent", this.addStudent);
-		router.on("route:viewAllStudents", this.viewAll);
-		router.on("route:viewStudents", this.viewStudent);
+		this.router.on("route:default", function(){
+			that.goHome();
+		});
+		this.router.on("route:addStudent", function(){
+		 	that.addStudent();
+		});
+		this.router.on("route:viewAllStudents", function() {
+			that.viewAll();
+		});
+		this.router.on("route:viewStudent", function(id) { console.log("from event: ", id);
+			that.viewStudent(id);
+		});
+	},
+	componentDidMount: function() {
+		// Signal to backbone that all the routes have
+		// been set up
+		Backbone.history.start();
 	},
 	goHome: function() {
 		this.setState({
@@ -56,7 +73,9 @@ var Content = module.exports = React.createClass({
 		this.setState({
 			view: {
 				path: "/students/:id",
-				params: params
+				params: {
+          id: params
+        }
 			}
 		});
 	},
@@ -66,21 +85,21 @@ var Content = module.exports = React.createClass({
 		// Process the state of the
 		// Content to display the correct
 		// view
-		switch(this.state.view) {
-			case '/students/add'
+		switch(this.state.view.path) {
+			case '/students/add':
 				view = (
 					<StudentForm />
 				);
 				break;
 
-			case '/students/:id'
+			case '/students/:id':
 				var id = this.state.view.params.id;
 				view = (
 					<StudentView id={id} />
 				);
 				break;
 
-			case '/students'
+			case '/students':
 				view = (
 					<StudentList />
 				);

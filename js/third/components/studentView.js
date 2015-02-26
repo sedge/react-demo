@@ -1,16 +1,20 @@
 var React = require('React');
-var Models = require('../bin/model');
+var models = require('../bin/model');
+
+var ReactBootstrap = require('react-bootstrap');
+var Alert = ReactBootstrap.Alert;
+var Table = ReactBootstrap.Table;
 
 var StudentView = module.exports = React.createClass({
-	render: function() {
+	render: function() { console.log(this.props.id)
 		var content;
 		var student = models.getStudentById(this.props.id);
 
 		if (!student) {
 			view = (
-				<p>
-					The student associated with {this.props.id} does not exist.
-				</p>
+				<Alert bsStyle="danger">
+					The student associated with <strong>ID {this.props.id}</strong> does not exist.
+				</Alert>
 			);
 		} else {
 			var emails = "";
@@ -20,20 +24,25 @@ var StudentView = module.exports = React.createClass({
 			});
 
 			view = (
-				<table>
+				<Table bordered={true} striped={true}>
 					<tr>
-						<th>Student Name</th>
-						<th>Student Id</th>
-						<th>Student Rank</th>
-						<th>Student Emails</th>
+						<th colSpan="4">Viewing: {
+							student.firstName + " " + student.lastName
+						}</th>
 					</tr>
 					<tr>
-						<td>{student.firstName + "" + student.lastName}</td>
-						<td>{student.id}</td>
-						<td>{student.rank}</td>
-						<td>{emails}</td>
+						<th>Id:</th>
+						<td colSpan="3">{student.id}</td>
 					</tr>
-				</table>
+					<tr>
+						<th>Rank:</th>
+						<td colSpan="3">{student.rank}</td>
+					</tr>
+					<tr>
+						<th>Emails:</th>
+						<td colSpan="3">{emails}</td>
+					</tr>
+				</Table>
 			);
 		}
 

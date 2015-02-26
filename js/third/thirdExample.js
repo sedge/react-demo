@@ -6,13 +6,13 @@ var Footer = require('./components/footer');
 
 var urls = {
 	nav: {
-		"Welcome Page": "/",
-		"Add a Student": "/students/add",
-		"View all Students": "/students"
+		"Welcome Page": "",
+		"Add a Student": "students/add",
+		"View all Students": "students"
 	},
 	footer: {
-		"Privacy Policy": "/privacy",
-		"About us": "/about"
+		"Privacy Policy": "privacy",
+		"About us": "about"
 	}
 };
 

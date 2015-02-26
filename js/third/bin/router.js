@@ -1,6 +1,12 @@
-var Router = require("backbone").Router;
+var Backbone = require("backbone");
+var $ = require("jquery");
 
-var AppRouter = module.exports = Router.extend({
+// Backbone's Router needs jquery, but
+// the Backbone npm package doesn't include it
+var Router = Backbone.Router;
+Backbone.$ = $;
+
+var AppRouter = Router.extend({
 	routes: {
 		"students": "viewAllStudents",
 		"students/add": "addStudent",
@@ -8,3 +14,5 @@ var AppRouter = module.exports = Router.extend({
 		"*splat": "default"
 	}
 });
+
+module.exports = AppRouter;

@@ -1,6 +1,8 @@
 var React = require('React');
 var LinkBar = require("./linkbar.js");
 
+var Jumbotron = require("react-bootstrap").Jumbotron;
+
 var Header = module.exports = React.createClass({
 	render: function() {
 		var id = 0;
@@ -18,10 +20,12 @@ var Header = module.exports = React.createClass({
 
 		return (
 			<div className="header">
-				<h1>Welcome to the application!</h1>
-				<LinkBar>
+				<LinkBar fixedTop={true} title={"OpenDojo"}>
 					{links}
 				</LinkBar>
+				<Jumbotron>
+					<h1>Nariyuki Reactjs Demo</h1>
+				</Jumbotron>
 			</div>
 		);
 	}

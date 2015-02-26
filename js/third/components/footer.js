@@ -18,8 +18,7 @@ var Footer = module.exports = React.createClass({
 
 		return (
 			<div className="footer">
-				<h4>Copyright forevr</h4>
-				<LinkBar>
+				<LinkBar fixedBottom={true} title={"Copyright OpenDojo 2015"}>
 					{links}
 				</LinkBar>
 			</div>
