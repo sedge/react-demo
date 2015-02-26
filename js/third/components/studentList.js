@@ -52,7 +52,7 @@ var StudentList = module.exports = React.createClass({
 		}
 
 		return (
-			<div className="studentView">
+			<div className="studentView container">
 				{view}
 			</div>
 		);

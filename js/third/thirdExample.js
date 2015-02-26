@@ -1,5 +1,7 @@
 var React = require('React');
 
+window.React = React;
+
 var Header = require('./components/header');
 var Content = require('./components/content');
 var Footer = require('./components/footer');

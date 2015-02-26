@@ -11,6 +11,8 @@ function UUID() {
 }
 
 function addStudent(data) {
+	data.id = UUID();
+
 	students.push(data);
 }
 
@@ -35,7 +37,6 @@ addStudent({
 	firstName: "Kieran",
 	lastName: "Sedgwick",
 	rank: "Black-belt",
-	id: UUID(),
 	emails: [
 		'ksedgwick@myseneca.ca',
 		'kieran.sedgwick@gmail.com'
@@ -45,7 +46,6 @@ addStudent({
 	firstName: "Alina",
 	lastName: "Shtramwasser",
 	rank: "Kitty-belt",
-	id: UUID(),
 	emails: [
 		'ashtramwasser@myseneca.ca'
 	]
@@ -54,7 +54,6 @@ addStudent({
 	firstName: "Yoav",
 	lastName: "Gurevich",
 	rank: "Smoke-belt",
-	id: UUID(),
 	emails: [
 		'ygureivich@myseneca.ca',
 		'verandunus@gmail.com'
@@ -64,7 +63,6 @@ addStudent({
 	firstName: "Chris",
 	lastName: "Choi",
 	rank: "?????",
-	id: UUID(),
 	emails: [
 		'ssduk2121@gmail.com',
 		'chris@myseneca.ca'

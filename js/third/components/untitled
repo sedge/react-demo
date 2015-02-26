@@ -1,0 +1,40 @@
+var React = require('React');
+var models = require('../bin/model');
+
+var newId = models.UUID();
+
+var ReactBootstrap = require('react-bootstrap');
+var Input = ReactBootstrap.Input;
+
+var Input = module.exports = React.createClass({
+	handleSubmit: function(e) {
+		e.preventDefault();
+
+		var emails = this.refs.emails.getDOMNode().value.trim().split(',').map(function(email){
+			return email.trim();
+		});
+
+		models.addStudent({
+			firstName: this.refs.firstName.getDOMNode().value.trim(),
+			lastName: this.refs.lastName.getDOMNode().value.trim(),
+			rank: this.refs.rank.getDOMNode().value.trim(),
+			emails: emails
+		});
+
+		this.props.router.navigate('students', {trigger: true});
+	},
+	render: function() {
+		return (
+			<div className="addStudent container">
+				<form>
+					<h2> Enter new student information:</h2>
+					<Input label="First Name" type="text" ref="firstName" placeholder="e.g. Bob" />
+					<Input label="Last Name" type="text" ref="lastName" placeholder="e.g. Smith" />
+					<Input label="Rank" type="text" ref="rank" placeholder="(colour)" />
+					<Input label="Emails" type="text" ref="emails" placeholder="(comma delimited)" />
+					<Input type="submit" value="Save" onClick={this.handleSubmit} />
+				</form>
+			</div>
+		);
+	}
+});

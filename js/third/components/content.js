@@ -88,7 +88,7 @@ var Content = module.exports = React.createClass({
 		switch(this.state.view.path) {
 			case '/students/add':
 				view = (
-					<StudentForm />
+					<StudentForm router={this.router} />
 				);
 				break;
 
